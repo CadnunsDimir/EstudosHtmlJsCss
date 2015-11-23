@@ -25,7 +25,7 @@
 				var btnAddTask = document.getElementById("btnAddTask");
 				var taskList = document.getElementById("taskList");
 				var doneList = document.getElementById("doneList");
-				var addTodoTask = function(){
+				var createTask = function(){
 					var id = document.querySelectorAll("#taskList > li").length + document.querySelectorAll("#doneList > li").length;
 					var node = document.createElement("li");                 // Create a <li> node
 					var taskChecker = document.createElement("input");
@@ -37,18 +37,18 @@
 					node.appendChild(textnode);                              // Append the text to <li>
 					taskList.appendChild(node); 
 				};
-				btnAddTask.addEventListener("click",addTodoTask);
+				btnAddTask.addEventListener("click",createTask);
 				var taskChecker_isChanged = function(evt){
 					if(evt.target.checked){
 						console.log("done");
 						itemLista = evt.target.parentElement;
 						doneList.appendChild(itemLista)
-						taskList.removeChild(itemLista);
+						//taskList.removeChild(itemLista);
 					}else{
 						console.log("todo");
 						itemLista = evt.target.parentElement;
 						taskList.appendChild(itemLista)
-						doneList.removeChild(itemLista);
+						//doneList.removeChild(itemLista);
 					}					
 				}
 				
