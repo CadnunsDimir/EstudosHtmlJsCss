@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Lista Tarefas</title>
+	</head>
+	<body>		
+		<h1>Lista de tarefas</h1>
+		<div>
+			<input type="text" id="tboxTask" on = ""/>
+			<button id="btnAddTask" >adicionar</button>
+		</div>
+		<div class="todo-list-card">
+			<h3>Done List</h3>
+			<ul id="taskList">				
+			</ul>
+		</div>
+		<div class="done-list-card">
+		<h3>Todo List</h3>
+			<ul id="doneList">
+				
+			</ul>
+		</div>
+		<script>			
+			(function(){
+				var tboxTask = document.getElementById("tboxTask");
+				var btnAddTask = document.getElementById("btnAddTask");
+				var taskList = document.getElementById("taskList");
+				var doneList = document.getElementById("doneList");
+				var addTodoTask = function(){
+					var id = document.querySelectorAll("#taskList").length;
+					var node = document.createElement("li");                 // Create a <li> node
+					var taskChecker = document.createElement("input");
+					taskChecker.type = "checkbox";
+					taskChecker.name = "taskChecker-"+id;
+					taskChecker.addEventListener("change",taskChecker_isChanged);
+					var textnode = document.createTextNode(tboxTask.value);        // Create a text node	
+					node.appendChild(taskChecker);
+					node.appendChild(textnode);                              // Append the text to <li>
+					taskList.appendChild(node); 
+				};
+				btnAddTask.addEventListener("click",addTodoTask);
+				var taskChecker_isChanged = function(evt){
+					if(evt.target.checked){
+						console.log("done");
+						itemLista = evt.target.parentElement;
+						doneList.appendChild(itemLista)
+						taskList.removeChild(itemLista);
+					}else{
+						console.log("todo");
+						itemLista = evt.target.parentElement;
+						taskList.appendChild(itemLista)
+						doneList.removeChild(itemLista);
+					}					
+				}
+				
+				
+			}());
+		</script>
+	</body>
+</html>
