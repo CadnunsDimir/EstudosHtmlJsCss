@@ -26,7 +26,7 @@
 				var taskList = document.getElementById("taskList");
 				var doneList = document.getElementById("doneList");
 				var addTodoTask = function(){
-					var id = document.querySelectorAll("#taskList").length;
+					var id = document.querySelectorAll("#taskList > li").length + document.querySelectorAll("#doneList > li").length;
 					var node = document.createElement("li");                 // Create a <li> node
 					var taskChecker = document.createElement("input");
 					taskChecker.type = "checkbox";
