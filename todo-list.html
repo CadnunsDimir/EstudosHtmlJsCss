@@ -26,6 +26,20 @@
 				var btnAddTask = document.getElementById("btnAddTask");
 				var taskList = document.getElementById("taskList");
 				var doneList = document.getElementById("doneList");
+				
+				var tasks = localStorageAcess.ListTodoTasks();
+				foreach(task in tasks){
+				  	var node = document.createElement("li");                 // Create a <li> node
+					var taskChecker = document.createElement("input");
+					taskChecker.type = "checkbox";
+					taskChecker.name = "taskChecker-"+task.id;
+					taskChecker.addEventListener("change",taskChecker_isChanged);
+					var textnode = document.createTextNode(task.nome);     // Create a text node	
+					node.appendChild(taskChecker);
+					node.appendChild(textnode);                              // Append the text to <li>
+					taskList.appendChild(node); 
+				}
+				
 				var createTask = function(){
 					var id = document.querySelectorAll("#taskList > li").length + document.querySelectorAll("#doneList > li").length;
 					var node = document.createElement("li");                 // Create a <li> node
