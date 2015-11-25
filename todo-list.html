@@ -27,18 +27,26 @@
 				var taskList = document.getElementById("taskList");
 				var doneList = document.getElementById("doneList");
 				
-				var tasks = localStorageAcess.ListTodoTasks();
-				for(var i = 0; i < tasks.length;i++){
-					var task = tasks[i];
-				  	var node = document.createElement("li");                 // Create a <li> node
-					var taskChecker = document.createElement("input");
-					taskChecker.type = "checkbox";
-					taskChecker.name = "taskChecker-"+task.id;
-					taskChecker.addEventListener("change",taskChecker_isChanged);
-					var textnode = document.createTextNode(task.nome);     // Create a text node	
-					node.appendChild(taskChecker);
-					node.appendChild(textnode);                              // Append the text to <li>
-					taskList.appendChild(node); 
+				var loadStoredTasks = function(){
+					var tasks = localStorageAcess.ListTodoTasks();
+					for(var i = 0; i < tasks.length;i++){
+						var task = tasks[i];
+					  	var node = document.createElement("li");                 // Create a <li> node
+						var taskChecker = document.createElement("input");
+						taskChecker.type = "checkbox";
+						taskChecker.name = "taskChecker-"+task.id;
+						taskChecker.addEventListener("change",taskChecker_isChanged);
+						var textnode = document.createTextNode(task.nome);     // Create a text node	
+						node.appendChild(taskChecker);
+						node.appendChild(textnode);
+						// Append the text to <li>
+						if(task.isDone){
+						   doneList.appendChild(node); 	
+						}else{
+						   taskList.appendChild(node);	
+						}
+						
+					}
 				}
 				
 				var createTask = function(){
@@ -68,7 +76,7 @@
 					}					
 				}
 				
-				
+				loadStoredTasks();
 			}());
 		</script>
 	</body>
