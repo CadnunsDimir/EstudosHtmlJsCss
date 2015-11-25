@@ -22,7 +22,7 @@ function LocalStorageAcess(){
   };
   this.ReadTask = function(id){
     var taskObj = localStorage.getItem(_storageKey);
-    return = JSON.parse(taskObj);
+    return JSON.parse(taskObj);
   };
 }
 
