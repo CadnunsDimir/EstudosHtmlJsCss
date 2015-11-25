@@ -28,7 +28,7 @@
 				var doneList = document.getElementById("doneList");
 				
 				var tasks = localStorageAcess.ListTodoTasks();
-				foreach(task in tasks){
+				for(task in tasks){
 				  	var node = document.createElement("li");                 // Create a <li> node
 					var taskChecker = document.createElement("input");
 					taskChecker.type = "checkbox";
