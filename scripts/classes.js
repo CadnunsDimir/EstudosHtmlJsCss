@@ -2,7 +2,7 @@
 function LocalStorageAcess(){
   var _storageKey = "uauhskjhkjas";
   
-  var allTasks = [];
+  var allTasks = new Array();
   
   var _loadStorage = function(){
     return localStorage.getItem(_storageKey);
