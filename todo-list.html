@@ -60,7 +60,7 @@
 					node.appendChild(taskChecker);
 					node.appendChild(textnode);                              // Append the text to <li>
 					taskList.appendChild(node); 
-					localStorageAcess.CreateTask({id:this.id, nome:tboxTask.value});
+					localStorageAcess.CreateTask({id:taskChecker.name, nome:tboxTask.value});
 				};
 				btnAddTask.addEventListener("click",createTask);
 				var taskChecker_isChanged = function(evt){
