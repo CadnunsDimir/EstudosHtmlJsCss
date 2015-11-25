@@ -14,11 +14,13 @@ function LocalStorageAcess(){
   };
   
   this.ListTodoTasks = function(){
-    
+    allTasks = JSON.parse(localStorage.getItem(_storageKey));
+    return allTasks;
   };
   
   this.CreateTask = function(taskObj){
-    localStorage.setItem(_storageKey,JSON.stringify(taskObj));
+    allTasks.push(taskObj);
+    localStorage.setItem(_storageKey,JSON.stringify(allTasks));
   };
   this.ReadTask = function(id){
     var taskObj = localStorage.getItem(_storageKey);
