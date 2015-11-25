@@ -5,7 +5,7 @@ function LocalStorageAcess(){
   var allTasks = new Array();
   
   var _loadStorage = function(){
-    return localStorage.getItem(_storageKey);
+    return JSON.parse(localStorage.getItem(_storageKey))  || new Array();
   };
   allTasks = _loadStorage();
   this.ListAllTasks = function(){
